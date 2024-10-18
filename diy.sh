@@ -29,6 +29,13 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
+
+# 主题
+git clone --depth=1 -b js https://github.com/sirpdboy/luci-theme-kucat package/kucat
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+
+
 # 在线更新
 git clone --depth 1 https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
@@ -42,11 +49,13 @@ git clone --depth 1 https://github.com/Erope/openwrt_nezha package/nezha
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 
 # 科学上网插件
+git clone --depth=1 https://github.com/VIKINGYFY/homeproxy package/homeproxy
+git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo package/mihomo
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+git_sparse_clone master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # 家长控制
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
@@ -54,13 +63,33 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFil
 # 系统监控工具
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 
-# Themes
-# git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-# git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-
 # Alist
 git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
 # iStore
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
+git_sparse_clone main https://github.com/linkease/istore-ui package/app-store-ui
+git_sparse_clone main https://github.com/linkease/istore package/luci
+
+# 内网穿透
+git clone --depth=1 https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
+
+# 进价设置
+git clone --depth=1 https://github.com/VIKINGYFY/luci-app-advancedplus package/luci-app-advancedplus
+
+#网络唤醒
+git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-app-wolplus
+
+# 关机
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+
+# 家长控制
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+
+# 系统监控工具
+git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
+
+# 微信/Telegram 推送的插件
+git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+
+# 关机
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
