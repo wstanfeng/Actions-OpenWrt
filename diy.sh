@@ -56,9 +56,6 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-a
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 # git_sparse_clone master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
-# 家长控制
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-
 # 系统监控工具
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 
