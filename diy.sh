@@ -54,7 +54,7 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages packa
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-git_sparse_clone master https://github.com/vernesong/OpenClash package/luci-app-openclash
+# git_sparse_clone master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # 家长控制
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
@@ -82,10 +82,10 @@ git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-a
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 
 # 微信/Telegram 推送的插件
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+git clone --depth=1 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
 # 网易云音乐
 git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 
 # homebox内网测速
-git clone --depth=1 https://github.com/wstanfeng/luci-app-homebox package/luci-app-homebox
+# git clone --depth=1 https://github.com/wstanfeng/luci-app-homebox package/luci-app-homebox
