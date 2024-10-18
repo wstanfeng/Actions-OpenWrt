@@ -82,14 +82,14 @@ git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-a
 # 关机
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 
-# 家长控制
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-
-# 系统监控工具
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-
 # 微信/Telegram 推送的插件
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
-# 关机
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+# 网易云音乐
+git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
+
+# homebox内网测速
+git clone --depth=1 https://github.com/wstanfeng/luci-app-homebox package/luci-app-homebox
+
+# 在线更新
+git clone --depth=1 https://github.com/wstanfeng/luci-app-immupdate package/luci-app-gpsysupgrade
