@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: master
-  CONFIG_FILE: .config
+  CONFIG_FILE: /config/immortalwrt.config
   DIY_SCRIPT: diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
