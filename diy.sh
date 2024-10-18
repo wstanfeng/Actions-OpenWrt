@@ -56,12 +56,6 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-a
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 # git_sparse_clone master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
-# 系统监控工具
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-
-# Alist
-git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
-
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui package/app-store-ui
 git_sparse_clone main https://github.com/linkease/istore package/luci
@@ -74,9 +68,3 @@ git clone --depth=1 https://github.com/VIKINGYFY/luci-app-advancedplus package/l
 
 #网络唤醒
 git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-app-wolplus
-
-# 关机
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-
-# 网易云音乐
-git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
