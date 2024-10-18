@@ -56,6 +56,12 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/l
 # Alist
 git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
+# 网络唤醒
+git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-app-wolplus
+
+# 组网
+git clone --depth=1 https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
+
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
