@@ -152,7 +152,7 @@ jobs:
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
-        echo -n "${{ env.KERNEL }}" > version.txt
+        echo -n "${{ env.DATE }}}" > version.txt
         echo -e "内核版本: $(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" > release.txt
 
     - name: Upload Firmware To Artifact
