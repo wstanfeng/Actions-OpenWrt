@@ -35,9 +35,8 @@ git clone --depth=1 -b js https://github.com/sirpdboy/luci-theme-kucat package/k
 git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
-
 # 在线更新
-git clone --depth 1 https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
+git clone --depth=1 https://github.com/wstanfeng/luci-app-immupdate package/luci-app-gpsysupgrade
 
 # ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
@@ -90,6 +89,3 @@ git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblocknetea
 
 # homebox内网测速
 git clone --depth=1 https://github.com/wstanfeng/luci-app-homebox package/luci-app-homebox
-
-# 在线更新
-git clone --depth=1 https://github.com/wstanfeng/luci-app-immupdate package/luci-app-gpsysupgrade
