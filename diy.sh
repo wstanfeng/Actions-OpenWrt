@@ -81,11 +81,5 @@ git clone --depth=1 https://github.com/VIKINGYFY/luci-app-wolplus package/luci-a
 # 关机
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 
-# 微信/Telegram 推送的插件
-git clone --depth=1 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-
 # 网易云音乐
 git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
-
-# homebox内网测速
-# git clone --depth=1 https://github.com/wstanfeng/luci-app-homebox package/luci-app-homebox
