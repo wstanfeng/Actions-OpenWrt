@@ -1,82 +1,60 @@
 #!/bin/bash
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+#
+# Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
 
-#安装和更新软件包
-UPDATE_PACKAGE() {
-	local PKG_NAME=$1
-	local PKG_REPO=$2
-	local PKG_BRANCH=$3
-	local PKG_SPECIAL=$4
-	local REPO_NAME=$(echo $PKG_REPO | cut -d '/' -f 2)
+# Modify default IP
+#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-	rm -rf $(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune)
+# Modify default theme
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
-	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
+# 更换6.6内核 
+#sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 
-	if [[ $PKG_SPECIAL == "pkg" ]]; then
-		cp -rf $(find ./$REPO_NAME/*/ -maxdepth 3 -type d -iname "*$PKG_NAME*" -prune) ./
-		rm -rf ./$REPO_NAME/
-	elif [[ $PKG_SPECIAL == "name" ]]; then
-		mv -f $REPO_NAME $PKG_NAME
-	fi
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
 }
 
-#UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
-UPDATE_PACKAGE "argon" "jerrykuku/luci-theme-argon" "master"
-UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "js"
+# 在线更新
+git clone --depth 1 https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
-UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
-UPDATE_PACKAGE "mihomo" "morytyann/OpenWrt-mihomo" "main"
-UPDATE_PACKAGE "nekoclash" "Thaolga/luci-app-nekoclash" "main"
-UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
-UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
-UPDATE_PACKAGE "ssr-plus" "fw876/helloworld" "master"
+# ddns-go
+git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
 
-UPDATE_PACKAGE "luci-app-advancedplus" "VIKINGYFY/luci-app-advancedplus" "main"
-UPDATE_PACKAGE "luci-app-gecoosac" "lwb1978/openwrt-gecoosac" "main"
-UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
-UPDATE_PACKAGE "luci-app-wolplus" "VIKINGYFY/luci-app-wolplus" "main"
+# nezha
+git clone --depth 1 https://github.com/Erope/openwrt_nezha package/nezha
 
-UPDATE_PACKAGE "luci-app-gpsysupgrade" "wstanfeng/luci-app-immupdate" "main"
-UPDATE_PACKAGE "luci-app-nezha" "Erope/openwrt_nezha" "main"
-UPDATE_PACKAGE "luci-app-adguardhome" "kongfl888/luci-app-adguardhome" "master"
+# adguardhome
+git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 
-if [[ $WRT_REPO != *"immortalwrt"* ]]; then
-	UPDATE_PACKAGE "qmi-wwan" "immortalwrt/wwan-packages" "master" "pkg"
-fi
+# 科学上网插件
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
+# git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
-#更新软件包版本
-UPDATE_VERSION() {
-	local PKG_NAME=$1
-	local PKG_MARK=${2:-not}
-	local PKG_FILES=$(find ./ ../feeds/packages/ -maxdepth 3 -type f -wholename "*/$PKG_NAME/Makefile")
+# Themes
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
-	echo " "
+# Alist
+git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
 
-	if [ -z "$PKG_FILES" ]; then
-		echo "$PKG_NAME not found!"
-		return
-	fi
-
-	echo "$PKG_NAME version update has started!"
-
-	for PKG_FILE in $PKG_FILES; do
-		local PKG_REPO=$(grep -Pho 'PKG_SOURCE_URL:=https://.*github.com/\K[^/]+/[^/]+(?=.*)' $PKG_FILE | head -n 1)
-		local PKG_VER=$(curl -sL "https://api.github.com/repos/$PKG_REPO/releases" | jq -r "map(select(.prerelease|$PKG_MARK)) | first | .tag_name")
-		local NEW_VER=$(echo $PKG_VER | sed "s/.*v//g; s/_/./g")
-		local NEW_HASH=$(curl -sL "https://codeload.github.com/$PKG_REPO/tar.gz/$PKG_VER" | sha256sum | cut -b -64)
-		local OLD_VER=$(grep -Po "PKG_VERSION:=\K.*" "$PKG_FILE")
-
-		echo "$OLD_VER $PKG_VER $NEW_VER $NEW_HASH"
-
-		if [[ $NEW_VER =~ ^[0-9].* ]] && dpkg --compare-versions "$OLD_VER" lt "$NEW_VER"; then
-			sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=$NEW_VER/g" "$PKG_FILE"
-			sed -i "s/PKG_HASH:=.*/PKG_HASH:=$NEW_HASH/g" "$PKG_FILE"
-			echo "$PKG_FILE version has been updated!"
-		else
-			echo "$PKG_FILE version is already the latest!"
-		fi
-	done
-}
-
-#UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
-UPDATE_VERSION "sing-box" "true"
+# iStore
+git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+git_sparse_clone main https://github.com/linkease/istore luci
