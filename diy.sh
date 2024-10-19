@@ -69,11 +69,6 @@ git_sparse_clone main https://github.com/linkease/istore luci
 # 网易云音乐
 git clone --depth=1 -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 
-# 修改版本为编译日期
-date_version=$(date +"%y.%m.%d")
-orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-sed -i "s/${orig_version}/R${date_version} by tanfeng/g" package/lean/default-settings/files/zzz-default-settings
-
 #修复freeswitch依赖缺失
 PKG_PATCH="$GITHUB_WORKSPACE/openwrt/package/"
 cd $PKG_PATCH
