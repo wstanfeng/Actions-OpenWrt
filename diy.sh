@@ -67,9 +67,10 @@ git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
 #修复freeswitch依赖缺失
-FW_FILE=$(find package/feeds/telephony/ -maxdepth 3 -type f -wholename "*/freeswitch/Makefile")
+PKG_PATCH="$GITHUB_WORKSPACE/openwrt/package/"
+FW_FILE=$(find .../feeds/telephony/ -maxdepth 3 -type f -wholename "*/freeswitch/Makefile")
 if [ -f "$FW_FILE" ]; then
 	sed -i "s/libpcre/libpcre2/g" $FW_FILE
 
-	cd $OPENWRT_PATH/package/  && echo "freeswitch has been fixed!"
+	cd $PKG_PATCH && echo "freeswitch has been fixed!"
 fi
