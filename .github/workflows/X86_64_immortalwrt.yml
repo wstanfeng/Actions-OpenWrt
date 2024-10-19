@@ -20,7 +20,7 @@ env:
 jobs:
   Build:
     runs-on: ubuntu-22.04
-
+    - name: Free Disk Space
     steps:
       - name: Free Disk Space
         uses: endersonmenezes/free-disk-space@main
