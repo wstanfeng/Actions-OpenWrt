@@ -69,6 +69,9 @@ git_sparse_clone main https://github.com/linkease/istore luci
 # 网易云音乐
 git clone --depth=1 -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 
+# lucky
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lucky
+
 # 修改版本
 # 获取当前日期并格式化为 'yy.mm.dd' 格式
 openwrt_version=$(date +"%y.%m.%d")
