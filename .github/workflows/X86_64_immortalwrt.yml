@@ -113,7 +113,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_SCRIPT
         FW_FILE=$(find package/feeds/telephony/ -maxdepth 4 -type f -wholename "*/freeswitch/Makefile")
         if [ -f "$FW_FILE" ]; then
-	         sed -i "s/libpcre/libpcre2/g" $FW_FILE
+        sed -i "s/libpcre/libpcre2/g" $FW_FILE
 	cd $OPENWRT_PATH/package && echo "freeswitch has been fixed!"
         fi
 
