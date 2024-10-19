@@ -66,6 +66,9 @@ git clone --depth=1 https://github.com/asvow/luci-app-tailscale package/luci-app
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
+# 网易云音乐
+git clone --depth=1 -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
+
 #修复freeswitch依赖缺失
 PKG_PATCH="$GITHUB_WORKSPACE/openwrt/package/"
 cd $PKG_PATCH
