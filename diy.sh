@@ -69,6 +69,17 @@ git_sparse_clone main https://github.com/linkease/istore luci
 # 网易云音乐
 git clone --depth=1 -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 
+# 修改版本
+# 获取当前日期并格式化为 'yy.mm.dd' 格式
+openwrt_version=$(date +"%y.%m.%d")
+# 创建目录并确保文件存在
+# mkdir -p "package/base-files/files/etc"
+# touch "package/base-files/files/etc/openwrt_version"
+# 使用 sed 将文件内容替换为 openwrt_version 变量的内容
+sed -i "s/.*/$openwrt_version/" "package/base-files/files/etc/openwrt_version"
+# 输出确认消息
+echo "Version file has been customized to '$openwrt_version'."
+
 #修复freeswitch依赖缺失
 PKG_PATCH="$GITHUB_WORKSPACE/openwrt/package/"
 cd $PKG_PATCH
