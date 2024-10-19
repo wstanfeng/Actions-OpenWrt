@@ -71,5 +71,5 @@ FW_FILE=$(find package/feeds/telephony/ -maxdepth 3 -type f -wholename "*/freesw
 if [ -f "$FW_FILE" ]; then
 	sed -i "s/libpcre/libpcre2/g" $FW_FILE
 
-	cd $OPENWRT_PATH/wrt/package/  && echo "freeswitch has been fixed!"
+	cd $OPENWRT_PATH/package/  && echo "freeswitch has been fixed!"
 fi
