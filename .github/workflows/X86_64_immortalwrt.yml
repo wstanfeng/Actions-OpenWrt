@@ -1,4 +1,4 @@
-name: X86_64-CT
+name: X86_64-CI
 
 on:
   workflow_dispatch:
