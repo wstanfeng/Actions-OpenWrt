@@ -89,3 +89,12 @@ git_sparse_clone master https://github.com/linkease/nas-packages network/service
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
+
+# Themes
+git clone https://github.com/y9858/luci-theme-opentomcat package/luci-theme-opentomcat
+
+# 更改 Argon 主题背景
+# cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+
+# 更改默认主题
+# sed -i 's/luci-theme-bootstrap/luci-theme-opentomcat/g' ./feeds/luci/collections/luci/Makefile
