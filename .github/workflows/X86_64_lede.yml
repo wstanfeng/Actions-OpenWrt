@@ -1,4 +1,4 @@
-name: X86_64-lede OpenWrt
+name: X86_64-lede
 
 on:
   workflow_dispatch:
