@@ -50,8 +50,8 @@ git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclas
 git clone --depth=1 https://github.com/VIKINGYFY/homeproxy package/homeproxy
 
 # Themes
-git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+#git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+#git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 # Alist
 git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
