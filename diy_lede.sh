@@ -30,10 +30,6 @@ function git_sparse_clone() {
 }
 
 
-# Themes
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-
 # 在线更新
 git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
@@ -59,7 +55,7 @@ git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 
 # 系统监控工具
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
+# git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 
 # 科学上网插件
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
