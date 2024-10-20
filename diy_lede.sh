@@ -12,6 +12,10 @@
 # 更换6.6内核 
 # sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 
+#切换23.05到18.06
+sed -i '/openwrt-23.05/d' feeds.conf.default
+sed -i 's/^#\(.*luci\)/\1/' feeds.conf.default
+
 # 修改主机信息
 echo -n "$(date +"%Y%m%d")" > package/base-files/files/etc/openwrt_version
 
