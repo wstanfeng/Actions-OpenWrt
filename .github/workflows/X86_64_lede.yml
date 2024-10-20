@@ -8,13 +8,13 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: config/lede.config
+  CONFIG_FILE: config/x86_lede.config
   DIY_SCRIPT: diy_lede.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: LEDE
+  FIRMWARE_TAG: x86_LEDE
   TZ: Asia/Shanghai
 
 jobs:
