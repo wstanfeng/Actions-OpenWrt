@@ -13,10 +13,6 @@
 # sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=6.1/g' ./target/linux/x86/Makefile
 
-#切换23.05到18.06
-#sed -i '/^#src-git luci https:\/\/github.com\/coolsnowwolf\/luci$/s/^#//' feeds.conf.default && echo luci OK! 
-#sed -i '/^src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23\.05$/s/^/#/' feeds.conf.default && echo openwrt-23 OK!
-
 # 更改默认主题
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
@@ -33,87 +29,12 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-# 移除要替换的包
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/msd_lite
-rm -rf feeds/packages/net/smartdns
-rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/luci/applications/luci-app-netdata
-rm -rf feeds/luci/applications/luci-app-ddns-go
-rm -rf feeds/packages/net/v2ray-geodata
-
-#golang 1.22.x or latest version
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-
-# mosdns
-git clone --depth 1 https://github.com/sbwml/luci-app-mosdns package/mosdns
-git clone --depth 1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-
-# 在线更新
+#在线更新
 git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
-# ddns-go
-git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
-
-# nezha
-git clone --depth 1 https://github.com/Erope/openwrt_nezha package/nezha
-
-# adguardhome
-git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-
-# 微信/Telegram 推送的插件
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-
-# AD
-git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
-
-# 关机
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-
-# 家长控制
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-
-# 系统监控工具
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-
-# 科学上网插件
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
-# git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
-
-# SmartDNS
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
-git clone --depth=1 https://github.com/pymumu/openwrt-smartdns package/smartdns
-
-# msd_lite
-git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
-git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
-
-# MosDNS
-git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
-
-# Alist
-git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
-
-# DDNS.to
-git_sparse_clone main https://github.com/linkease/nas-packages-luci luci/luci-app-ddnsto
-git_sparse_clone master https://github.com/linkease/nas-packages network/services/ddnsto
-
-# iStore
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
-
-# lucky
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lucky
-
-# Themes
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+#更新安装源
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
