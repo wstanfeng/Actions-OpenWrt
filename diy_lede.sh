@@ -31,14 +31,9 @@ function git_sparse_clone() {
 
 # 移除要替换的包
 rm -rf feeds/packages/net/mosdns
-rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-ddns-go
-
-# Themes
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 #在线更新
 git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
@@ -49,3 +44,8 @@ sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+# Themes
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
