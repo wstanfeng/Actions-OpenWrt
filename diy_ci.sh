@@ -59,7 +59,7 @@ git clone --depth 1 https://github.com/Erope/openwrt_nezha package/nezha
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 
 # 家长控制
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+#git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 
 # 系统监控工具
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
