@@ -16,6 +16,12 @@
 #sed -i '/^#src-git luci https:\/\/github.com\/coolsnowwolf\/luci$/s/^#//' feeds.conf.default && echo luci OK! 
 #sed -i '/^src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23\.05$/s/^/#/' feeds.conf.default && echo openwrt-23 OK!
 
+# 更改默认主题
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
+
+# 修改主机信息
+echo -n "$(date +"%Y%m%d")" > package/base-files/files/etc/openwrt_version
+
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -25,9 +31,6 @@ function git_sparse_clone() {
   mv -f $@ ../package
   cd .. && rm -rf $repodir
 }
-
-# 修改主机信息
-echo -n "$(date +"%Y%m%d")" > package/base-files/files/etc/openwrt_version
 
 # 移除要替换的包
 rm -rf feeds/packages/net/mosdns
@@ -104,12 +107,12 @@ git_sparse_clone master https://github.com/linkease/nas-packages network/service
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
+# lucky
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lucky
+
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-
-# 更改默认主题
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
