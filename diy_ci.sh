@@ -30,10 +30,6 @@ function git_sparse_clone() {
 }
 
 # 移除要替换的包
-rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/msd_lite
-rm -rf feeds/packages/net/smartdns
-rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/packages/net/v2ray-geodata
@@ -99,14 +95,8 @@ git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lu
 ./scripts/feeds install -a
 
 # 修改版本
-# 获取当前日期并格式化为 'yy.mm.dd' 格式
 openwrt_version=$(date +"%y.%m.%d")
-# 创建目录并确保文件存在
-# mkdir -p "package/base-files/files/etc"
-# touch "package/base-files/files/etc/openwrt_version"
-# 使用 sed 将文件内容替换为 openwrt_version 变量的内容
 sed -i "s/.*/$openwrt_version/" "package/base-files/files/etc/openwrt_version"
-# 输出确认消息
 echo "Version file has been customized to '$openwrt_version'."
 
 #修复freeswitch依赖缺失
