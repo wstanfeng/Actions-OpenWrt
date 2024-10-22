@@ -35,8 +35,6 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-ddns-go
 
-#在线更新
-git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
 #更新安装源
 sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
@@ -49,3 +47,12 @@ sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+
+# 家长控制
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+
+# 关机
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+
+#在线更新
+git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
