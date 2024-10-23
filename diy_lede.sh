@@ -1,18 +1,5 @@
 #!/bin/bash
 
-#切换18.06编译
-sed -i '/^#src-git luci https:\/\/github.com\/coolsnowwolf\/luci$/s/^#//' feeds.conf.default 
-echo luci OK! 
-sed -i '/^src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23\.05$/s/^/#/' feeds.conf.default
-echo openwrt-23 OK!
-
-#更新安装源
-sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
-        
-./scripts/feeds update -a
-./scripts/feeds install -a
-
 # 修改默认IP
 # sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
@@ -22,8 +9,7 @@ sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 # TTYD 免登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
-# 更换6.6内核 
-# sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
+# 更换内核 
 sed -i 's/KERNEL_PATCHVER:=.*/KERNEL_PATCHVER:=6.1/g' ./target/linux/x86/Makefile
 
 # 更改默认主题
@@ -42,15 +28,28 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
+# 软件源
+git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
 
 # Themes
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/kenzo/luci-theme-argon
+rm -rf package/kenzo/luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 #在线更新
 git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
+
+# 科学上网插件
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
+# git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+
+# iStore
+#git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+#git_sparse_clone main https://github.com/linkease/istore luci
 
 
 # 修改 Makefile
