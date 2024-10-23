@@ -30,16 +30,13 @@ function git_sparse_clone() {
 }
 
 #更新安装源
-sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+#sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+#sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 #高大全安装源
-#sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
+sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 #删除冲突插件
-#rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
-
-./scripts/feeds update -a
-./scripts/feeds install -a
+rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
 
 # Themes
 rm -rf feeds/luci/themes/luci-theme-argon
