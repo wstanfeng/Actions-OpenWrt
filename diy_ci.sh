@@ -91,9 +91,6 @@ git_sparse_clone main https://github.com/linkease/istore luci
 # lucky
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lucky
 
-./scripts/feeds update -a
-./scripts/feeds install -a
-
 # 修改版本
 openwrt_version=$(date +"%y.%m.%d")
 sed -i "s/.*/$openwrt_version/" "package/base-files/files/etc/openwrt_version"
