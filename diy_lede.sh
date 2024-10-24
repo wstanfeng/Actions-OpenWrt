@@ -40,6 +40,10 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/l
 #在线更新
 git clone --depth 1 -b LEDE https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
+# adguardhome
+rm -rf  package/kenzo/luci-app-adguardhome
+git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
+
 # 科学上网插件
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
 # git clone --depth=1 -b main https://github.com/fw876/helloworld package/helloworld
