@@ -43,7 +43,7 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 在线更新
-git clone --depth 1 -b CI https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
+# git clone --depth 1 -b CI https://github.com/wstanfeng/luci-app-gpsysupgrade package/luci-app-gpsysupgrade
 
 # ddns-go
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
@@ -58,7 +58,7 @@ git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/lu
 #git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 
 # 系统监控工具
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
+# git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
 
 # 科学上网插件
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/small
