@@ -1,9 +1,9 @@
 name: X86_64-CI
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: 30 16 * * *
+#on:
+#  workflow_dispatch:
+#  schedule:
+#    - cron: 30 16 * * *
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
