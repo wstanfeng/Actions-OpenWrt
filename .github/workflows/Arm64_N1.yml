@@ -1,4 +1,4 @@
-name: X86_64-LEDE
+name: Arm64_N1
 
 on:
   workflow_dispatch:
