@@ -29,11 +29,13 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-# 移除要替换的包
-#rm -rf feeds/luci/applications/luci-app-mosdns
-#rm -rf feeds/luci/applications/luci-app-netdata
-#rm -rf feeds/packages/net/v2ray-geodata
+移除要替换的包
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/packages/net/v2ray-geodata
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
