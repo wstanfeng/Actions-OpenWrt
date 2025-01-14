@@ -6,8 +6,8 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/x86_lede.config
-  DIY_SCRIPT: diy_lede.sh
+  CONFIG_FILE: x86_ci.config
+  DIY_SCRIPT: diy_ci.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
