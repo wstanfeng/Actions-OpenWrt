@@ -28,6 +28,9 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+
 # 软件源
 git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
 
