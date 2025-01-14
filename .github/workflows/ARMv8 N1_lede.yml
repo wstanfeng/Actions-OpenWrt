@@ -1,4 +1,4 @@
-name: ARMv8_N1
+name: ARMv8 N1_lede
 
 on:
   workflow_dispatch:
