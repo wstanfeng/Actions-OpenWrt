@@ -2,8 +2,8 @@ name: ARMv8 N1_lede
 
 on:
   workflow_dispatch:
-  #schedule:
-  #  - cron: 0 20 * * *
+  schedule:
+    - cron: 30 18 * * *
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
