@@ -16,7 +16,7 @@ env:
   FIRMWARE_RELEASE: true
   FIRMWARE_TAG: ROOTFS_MINI
   OPENWRT_RELEASE: true
-  OPENWRT_TAG: ARMv8_N1
+  OPENWRT_TAG: ARMv8_MINI
   TZ: Asia/Shanghai
 
 jobs:
@@ -193,8 +193,8 @@ jobs:
         body: |
           **This is Temporary Firmware for Armvirt 64**
           ### 📒 固件信息
-          - 🚀 成品固件点击此处跳转➦[PLUS](https://github.com/imaomao/OpenWrt/releases/tag/ARMv8_N1_PLUS)即可下载
-          - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }} (多功能临时固件)
+          - 🚀 成品固件点击此处跳转➦[PLUS](https://github.com/wstanfeng/Actions-OpenWrt/releases/tag/ARMv8_N1)即可下载
+          - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }} (精简自用)
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.1.1
@@ -275,7 +275,7 @@ jobs:
         body: |
           **This is OpenWrt Firmware for Armvirt 64**
           ### 📒 固件信息
-          - 🚀 ARMv8 多功能版，集成插件多适合折腾
+          - 🚀 ARMv8 自用精简 稳定为准
           - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
