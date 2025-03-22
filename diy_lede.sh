@@ -32,9 +32,9 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 # mosdns
-rm -rf feeds/packages/net/v2ray-geodata
+#rm -rf feeds/packages/net/v2ray-geodata
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 软件源
 git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
