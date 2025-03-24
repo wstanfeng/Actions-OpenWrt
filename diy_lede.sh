@@ -28,8 +28,8 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 # mosdns
 #rm -rf feeds/packages/net/v2ray-geodata
