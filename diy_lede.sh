@@ -39,6 +39,10 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # 软件源
 git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
 
+# lucky
+rm -rf package/kenzo/luci-app-lucky
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
+
 # Themes
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/kenzo/luci-theme-argon
@@ -57,9 +61,9 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # iStore
-rm -rf  package/kenzo/luci-app-istorex
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
+#rm -rf  package/kenzo/luci-app-istorex
+#git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+#git_sparse_clone main https://github.com/linkease/istore luci
 
 # 晶晨宝盒
 git_sparse_clone main https://github.com/ophub/luci-app-amlogic luci-app-amlogic
