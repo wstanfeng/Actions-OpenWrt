@@ -40,8 +40,8 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
 
 # lucky
-rm -rf package/kenzo/luci-app-lucky
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
+#rm -rf package/kenzo/luci-app-lucky
+#git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
 
 # Themes
 rm -rf feeds/luci/themes/luci-theme-argon
