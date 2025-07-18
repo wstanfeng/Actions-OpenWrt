@@ -37,9 +37,10 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 软件源
-git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
+#git clone --depth=1 https://github.com/kenzok8/openwrt-packages package/kenzo
 
 # lucky
+rm -rf feeds/packages/net/lucky
 rm -rf package/kenzo/luci-app-lucky
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
 
