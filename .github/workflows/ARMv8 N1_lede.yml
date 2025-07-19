@@ -234,41 +234,17 @@ jobs:
         sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
 
-#    - name: Download Armvirt Firmware
-#      id: download
-#      run: |
-#        FIRMWARE_PATH=openwrt/bin/targets/armvirt/64
-#        [ -d $FIRMWARE_PATH ] || mkdir -p $FIRMWARE_PATH
-#        cd $FIRMWARE_PATH
-#        wget -q $(curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep "$FIRMWARE_TAG.*rootfs.tar.gz" | awk -F '"' '{print $4}')
-#        echo "status=success" >> $GITHUB_OUTPUT
-#        echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-#        echo "DATE1=$(date +"%y.%m.%d")" >> $GITHUB_ENV
-
     - name: Download Armvirt Firmware
       id: download
       run: |
         FIRMWARE_PATH=openwrt/bin/targets/armvirt/64
-        FIRMWARE_TAG=${{ env.FIRMWARE_TAG }}     # 确保FIRMWARE_TAG变量已正确设置
         [ -d $FIRMWARE_PATH ] || mkdir -p $FIRMWARE_PATH
         cd $FIRMWARE_PATH
-
-        echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
-        echo "FIRMWARE_TAG: $FIRMWARE_TAG"
-
-        FIRMWARE_URL=$(curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep "$FIRMWARE_TAG.*rootfs.tar.gz" | awk -F '"' '{print $4}')
-        echo "FIRMWARE_URL: $FIRMWARE_URL"
-
-        if [ -z "$FIRMWARE_URL" ]; then
-          echo "Firmware URL not found!"
-          exit 1
-        fi
-
-        wget -q "$FIRMWARE_URL"
+        wget -q $(curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep "$FIRMWARE_TAG.*rootfs.tar.gz" | awk -F '"' '{print $4}')
         echo "status=success" >> $GITHUB_OUTPUT
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date +"%y.%m.%d")" >> $GITHUB_ENV
-        
+
     - name: Package OpenWrt Firmware
       uses: unifreq/openwrt_packit@master
       env:
